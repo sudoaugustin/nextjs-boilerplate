@@ -7,7 +7,7 @@ import useField from 'hooks/field';
 type Props = FieldProps & $Checkbox.CheckboxProps;
 
 export default function Checkbox({ name, label, ...rest }: Props) {
-  const { value, setValue } = useField(name);
+  const { value, setValue } = useField<boolean>(name);
   return (
     <fieldset className="flex items-center space-x-2">
       <$Checkbox.Root

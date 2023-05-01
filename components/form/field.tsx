@@ -4,7 +4,7 @@ import { Dispatch, ReactNode, SetStateAction } from 'react';
 
 type Props<T> = FieldProps & {
   children: (param: {
-    value: T;
+    value: T | undefined;
     error?: string;
     setValue: Dispatch<SetStateAction<T>>;
   }) => JSX.Element;
@@ -14,7 +14,7 @@ type Props<T> = FieldProps & {
 export type FieldProps = { name: string; label?: ReactNode };
 
 export default function Field<T = string>({ name, label, children, className }: Props<T>) {
-  const { error, value, setValue } = useField(name);
+  const { error, value, setValue } = useField<T>(name);
 
   return (
     <fieldset className={className}>

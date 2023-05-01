@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { HTMLAttributes, ReactNode } from 'react';
-import { DefaultValues, FieldValues, FormProvider, Path, SubmitHandler, UseFormReturn, UseFormSetValue, useForm } from 'react-hook-form';
+import { DefaultValues, FieldValues, FormProvider, SubmitHandler, UseFormReturn, UseFormSetValue, useForm } from 'react-hook-form';
 import request, { RespondError } from 'utils/request';
 import { SchemaOf } from 'yup';
 
@@ -10,15 +10,15 @@ type Props<TValues extends FieldValues,> = Omit<HTMLAttributes<HTMLFormElement>,
   initial?: DefaultValues<TValues>;
   reshape?: (values: TValues) => unknown;
   children: ReactNode | ((arg: UseFormReturn<TValues>) => ReactNode);
-  onError: (
+  onError?: (
     options: RespondError & {
       values: TValues;
       setValue: UseFormSetValue<TValues>;
       setError: (name: never, msg: string) => void;
     },
   ) => void;
-  onSubmit: SubmitHandler<TValues>;
-  onSuccess: <TData>(arg: { data: TData; values: TValues }) => void;
+  onSubmit?: SubmitHandler<TValues>;
+  onSuccess?: <TData>(arg: { data: TData; values: TValues }) => void;
 };
 
 export default function Form<TValues extends FieldValues>({

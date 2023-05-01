@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --o: 0;
+    --x: 0;
+    --y: 0;
+    --d: 0s;
+    --s: 0.75;
+    --t: 0.25s;
+    --header: 84px;
+  }
+  
+  * {
+    -webkit-tap-highlight-color: transparent;
+    @apply outline-none focus:outline-none selection:bg-brand-200/25;
+  }
+  
+  input,
+  button,
+  textarea {
+    @apply bg-transparent;
+  }
+
+}
+
+@layer components {
+  .input,
+  .phone,
+  .select,
+  .textarea {
+    @apply flex items-stretch w-full h-10 rounded-lg bg-gray-50 overflow-hidden ring-1 ring-gray-200 focus-within:ring-2 focus-within:ring-brand-400 duration-150;
+    &.error{
+      @apply text-error-800 ring-error-400;
+    }
+  }
+
+  .radio,
+  .checkbox {
+    @apply inline-flex flex-center w-4 h-4 border border-gray-400 ring-offset-2 ring-2 ring-transparent focus:ring-brand-400 radix-state-checked:border-brand-600 duration-150;
+  }
+
+  .prefix{
+    @apply pl-3 flex flex-center;
+  }
+  .postfix{
+    @apply pr-3 flex flex-center;
+  }
+}
+
+@layer utilities{
+
+}
